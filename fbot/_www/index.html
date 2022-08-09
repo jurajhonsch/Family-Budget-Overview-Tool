@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Metas -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Title -->
+		<title>Family Budget Overview Tool</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+		<!-- JavaScript -->
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.min.js') }}"></script>
+		<!-- StyleSheets -->
+		<link rel="stylesheet" href="/theme.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/global.styles.css') }}" />
+	</head>
+	<body>
+		<h1>Family Budget Overview Tool</h1>
+
+		<div class="group-dual">
+			<div class="group" style="flex: 3">
+				<div class="group-line">
+					<h3>Filter</h3>
+					<button class="apply">Apply</button>
+					<button class="clear">Clear</button>
+				</div>
+				<div class="group-line">
+					<label
+						>Show rows:
+						<select class="limit" value="{{ limit }}">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+							<option value="0">all</option>
+						</select>
+					</label>
+					<label>Min amount: <input type="nubmer" min="0" step="0.01" pattern="[0-9]+(\.,[0-9]+)?" class="min-amount" value="{{ min_amount }}" autocomplete="off" /></label>
+					<label>Max amount: <input type="nubmer" min="0" step="0.01" pattern="[0-9]+(\.,[0-9]+)?" class="max-amount" value="{{ max_amount }}" autocomplete="off" /></label>
+					<label
+						>Type:
+						<select class="type" autocomplete="off" value="{{ type }}">
+							<option value="all">all</option>
+							<option value="income">income</option>
+							<option value="expense">expense</option>
+						</select>
+					</label>
+					<label
+						>Category:
+						<select class="category" autocomplete="off" value="{{ category }}">
+							<option value="all">all</option>
+							{% for item in categories %}
+							<option value="{{ item }}">{{ item }}</option>
+							{% endfor %}
+						</select>
+					</label>
+					<label>From date: <input type="date" class="from-date" value="{{ from_date }}" autocomplete="off" /></label>
+					<label>To date: <input type="date" class="to-date" value="{{ to_date }}" autocomplete="off" /></label>
+				</div>
+			</div>
+			<div class="group" style="flex: 1">
+				<div class="group-line">
+					<h3>Chart</h3>
+					{% if has_data == True %}
+					<button class="epoch">Epoch</button>
+					<button class="compare">Compare</button>
+					{% else %}
+					<button class="epoch" disabled>Epoch</button>
+					<button class="compare" disabled>Compare</button>
+					{% endif %}
+				</div>
+				<p>To display chart, please select 'type' in your filter.</p>
+				<p>Table have to have data to display chart.</p>
+			</div>
+		</div>
+
+		<!-- Data -->
+		<div class="group">
+			<h3>Data</h3>
+			{% if has_data == True %}
+			<table class="data">
+				<tr>
+					<th style="width: min-content">Uuid</th>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Type</th>
+					<th>Category</th>
+					<th>Date</th>
+					<th>Comment</th>
+				</tr>
+				{% for iter in all_data %}
+				<tr>
+					<!-- Uuid -->
+					<td>
+						<span class="uuid">{{ iter[0] }}</span>
+					</td>
+					<!-- Name -->
+					<td>
+						<input type="text" name="name" minlength="1" autocomplete="off" value="{{ iter[1] }}" disabled />
+					</td>
+					<!-- Amount -->
+					<td>
+						<input type="number" min="0" step="0.01" name="amount" autocomplete="off" value="{{ iter[2] }}" disabled />
+					</td>
+					<!-- Type -->
+					<td>
+						<select name="type" autocomplete="off" value="{{ iter[3] }}" disabled>
+							<option value="expense">expense</option>
+							<option value="income">income</option>
+						</select>
+					</td>
+					<!-- Category -->
+					<td>
+						<select name="category" autocomplete="off" value="{{ iter[4] }}" disabled>
+							{% for item in categories %}
+							<option value="{{ item }}">{{ item }}</option>
+							{% endfor %}
+						</select>
+					</td>
+					<!-- Date -->
+					<td>
+						<input type="date" name="date" minlength="1" autocomplete="off" value="{{ iter[5] }}" disabled />
+					</td>
+					<!-- Comment -->
+					<td>
+						<input type="text" name="comment" minlength="0" autocomplete="off" value="{{ iter[6] }}" disabled />
+					</td>
+					<!-- Action -->
+					<td>
+						<div class="action">
+							<span class="action-edit material-symbols-outlined">edit</span>
+							<span class="action-delete material-symbols-outlined">delete</span>
+							<span class="action-duplicate material-symbols-outlined">content_copy</span>
+						</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% if limit != 0 %}
+			<div class="button-center">
+				<button class="action-show-all">Show all</button>
+			</div>
+			{% endif %}{% else %}
+			<div class="nodata">
+				<p>No data found, time to add some 🙂!</p>
+			</div>
+			{% endif %}
+		</div>
+
+		<button class="action-add material-symbols-outlined">add</button>
+		<div class="modal">
+			<div class="modal-box">
+				<span class="action-close material-symbols-outlined">close</span>
+				<h3>Add row</h3>
+				<div class="group">
+					<div class="label-holder">
+						<!-- Name -->
+						<label>Name </label>
+						<div class="input-holder">
+							<input type="text" name="name" minlength="1" autocomplete="off" value="" />
+						</div>
+					</div>
+					<div class="label-holder">
+						<!-- Amount -->
+						<label>Amount </label>
+						<div class="input-holder">
+							<input type="number" name="amount" min="0" step="0.01" pattern="[0-9]+(\.,[0-9]+)?" autocomplete="off" accommodation value="" />
+						</div>
+					</div>
+					<div class="label-holder">
+						<!-- Type -->
+						<label>Type </label>
+						<div class="input-holder">
+							<select name="type" autocomplete="off">
+								<option value="expense">expense</option>
+								<option value="income">income</option>
+							</select>
+						</div>
+					</div>
+					<div class="label-holder">
+						<!-- Category -->
+						<label>Category </label>
+						<div class="input-holder">
+							<select name="category" autocomplete="off">
+								{% for item in categories %}
+								<option value="{{ item }}">{{ item }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="label-holder">
+						<!-- Date -->
+						<label>Date </label>
+						<div class="input-holder">
+							<input type="date" name="date" minlength="1" autocomplete="off" />
+						</div>
+					</div>
+					<div class="label-holder">
+						<!-- Comment -->
+						<label>Comment </label>
+						<div class="input-holder">
+							<input type="text" name="comment" minlength="0" autocomplete="off" />
+						</div>
+					</div>
+				</div>
+				<div class="button-center">
+					<button class="action-add-submit material-symbols-outlined">done</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.script.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/global.script.js') }}"></script>
+	</body>
+</html>

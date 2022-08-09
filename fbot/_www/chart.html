@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Metas -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Title -->
+		<title>{{ chart_type }}</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+		<!-- JavaScript -->
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/chart.min.js') }}"></script>
+		<!-- StyleSheets -->
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/global.script.js') }}"></script>
+		<link rel="stylesheet" href="/theme.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/global.styles.css') }}" />
+	</head>
+	<body>
+		<div class="one-page">
+			<h1>{{ chart_type }} Chart</h1>
+			<div class="group">
+				<div class="group-line">
+					<h3>Filter</h3>
+					<button class="apply">Apply</button>
+				</div>
+				<div class="group-line">
+					<label
+						>Type:
+						<select class="type" autocomplete="off" value="{{ type }}">
+							<option value="income">income</option>
+							<option value="expense">expense</option>
+						</select>
+					</label>
+					<label>From date: <input type="date" class="from-date" value="{{ from_date }}" autocomplete="off" /></label>
+					<label>To date: <input type="date" class="to-date" value="{{ to_date }}" autocomplete="off" /></label>
+				</div>
+			</div>
+			<div class="chart-holder">
+				<canvas id="myChart"></canvas>
+			</div>
+		</div>
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/chart.script.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/global.script.js') }}"></script>
+	</body>
+</html>

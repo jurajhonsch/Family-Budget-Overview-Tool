@@ -1,0 +1,50 @@
+/* Fonts */
+@font-face {
+  font-family: "Ubuntu";
+  src: url("{{ url_for('static', filename='fonts/Ubuntu-Regular.ttf') }}");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("{{ url_for('static', filename='fonts/Ubuntu-Bold.ttf') }}");
+  font-weight: 700;
+}
+
+/****************/
+/* DO NOT TOUCH */
+/****************/
+* {
+  font-family: "{{ font_family }}";
+  font-size: {{ font_size }}px;
+}
+:root {
+  --primary: {{ primary }}; /* #4d97ff */
+  --background: {{ background }}; /* #fcfcfc */
+  --light: {{ light }}; /* #edf4ff */
+  --medium: {{ medium }}; /* #c5ddff */
+  --dark: {{ dark }}; /* #575e75 */
+  --transparent: {{ transparent }}; /* #4d97ff88 */
+  --shadow: rgba(0, 0, 0, 0.12) 0px 0px 8px 4px;
+}
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 400;
+  src: url("{{ url_for('static', filename='fonts/Material_Symbols_Outlined.woff2') }}")
+    format("woff2");
+}
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,171 @@
+#       ___           ___           ___           ___      
+#      /\  \         /\  \         /\  \         /\  \     
+#     /::\  \       /::\  \       /::\  \        \:\  \    
+#    /:/\:\  \     /:/\:\  \     /:/\:\  \        \:\  \   
+#   /::\~\:\  \   /::\~\:\__\   /:/  \:\  \       /::\  \  
+#  /:/\:\ \:\__\ /:/\:\ \:|__| /:/__/ \:\__\     /:/\:\__\ 
+#  \/__\:\ \/__/ \:\~\:\/:/  / \:\  \ /:/  /    /:/  \/__/ 
+#       \:\__\    \:\ \::/  /   \:\  /:/  /    /:/  /      
+#        \/__/     \:\/:/  /     \:\/:/  /     \/__/       
+#                   \::/__/       \::/  /                  
+#                    ~~            \/__/                   
+#                                                          
+#           Family Budget Overview Tool v1.0 Beta          
+#     This project is created by Juraj Honsch (c) 2022     
+
+###########################
+# Fbot configuration file #
+###########################
+
+# Color formats #
+
+# Some of possible color formats are
+
+# hex: (https://www.google.com/search?q=color+picker)
+#         ↱↱ green
+#     #f4d97ff
+#  red ↲↲   ↳↳ blue
+
+# rgb: r: 0-255; g: 0-255; b: 0-255;
+#             ↱↱↱ green
+#     rgb(235, 52, 52)
+#     red ↲↲↲     ↳↳↳ blue
+
+# hsl: h: 0-360; s: 0-100; l: 0-100;
+#              ↱↱↱ saturation
+#     hsv(250, 100%, 70%)
+#     hue ↲↲↲        ↳↳ luminance
+
+# name: (https://www.w3schools.com/colors/colors_names.asp)
+# 
+#      red
+#      ↳↳↳ color name
+
+
+[theme]
+
+# Basic blue theme from scratch.mit.edu
+
+# Blue
+primary = "hsl(215, 100%, 65%)"
+background = "hsl(0, 0%, 99%)"
+light = "hsl(215, 100%, 96%)"
+medium = "hsl(215, 100%, 89%)"
+dark = "hsl(215, 15%, 40%)"
+transparent = "hsla(215, 100%, 65%, 50%)"
+
+# Indigo
+# primary = "hsl(235, 100%, 65%)"
+# background = "hsl(0, 0%, 99%)"
+# light = "hsl(235, 100%, 96%)"
+# medium = "hsl(235, 100%, 89%)"
+# dark = "hsl(235, 15%, 40%)"
+# transparent = "hsla(235, 100%, 65%, 50%)"
+
+# Purple
+# primary = "hsl(250, 100%, 65%)"
+# background = "hsl(0, 0%, 99%)"
+# light = "hsl(250, 100%, 96%)"
+# medium = "hsl(250, 100%, 89%)"
+# dark = "hsl(250, 15%, 40%)"
+# transparent = "hsla(250, 100%, 65%, 50%)"
+
+# Pink
+# primary = "hsl(280, 100%, 65%)"
+# background = "hsl(0, 0%, 99%)"
+# light = "hsl(280, 100%, 96%)"
+# medium = "hsl(280, 100%, 89%)"
+# dark = "hsl(280, 15%, 40%)"
+# transparent = "hsla(280, 100%, 65%, 50%)"
+
+# Red
+# primary = "hsl(0, 100%, 65%)"
+# background = "hsl(0, 0%, 99%)"
+# light = "hsl(0, 100%, 96%)"
+# medium = "hsl(0, 100%, 89%)"
+# dark = "hsl(0, 15%, 40%)"
+# transparent = "hsla(0, 100%, 65%, 50%)"
+
+# Orange
+# primary = "hsl(20, 100%, 65%)"
+# background = "hsl(0, 0%, 99%)"
+# light = "hsl(20, 100%, 96%)"
+# medium = "hsl(20, 100%, 89%)"
+# dark = "hsl(20, 15%, 40%)"
+# transparent = "hsla(20, 100%, 65%, 50%)"
+
+# Font properties
+font_family = "Ubuntu" # sometimes you'll have to change www/theme.css to import font
+font_size = 16
+
+
+[display]
+
+# Possible categories
+categories = [
+    "accommodation",
+    "mobility",
+    "investment",
+    "clothing",
+    "repair",
+    "insurance",
+    "loan",
+    "education",
+    "services",
+    "consumable",
+    "entertainment",
+    "work",
+    "healthcare",
+    "other",
+]
+# Colors for categories
+colors = [
+    "#ffa463", # accommodation
+    "#ffe563", # mobility
+    "#d8ff63", # investment
+    "#97ff63", # clothing
+    "#63ff70", # repair
+    "#63ffb1", # insurance
+    "#63fff2", # loan
+    "#63cbff", # education
+    "#638aff", # services
+    "#7d63ff", # consumable
+    "#be63ff", # entertainment
+    "#ff63ff", # work
+    "#ff63be", # healthcare
+    "#ff637d", # other
+]
+# Default limit
+limit = 10
+
+[chart]
+
+# Chart type for epoch chart.
+epoch = "bar" # bar / line
+# Chart type for compare chart.
+compare = "pie" # pie / doughnut
+
+
+[server]
+
+# Where static files are located
+static_folder = "_static"
+# Where dynamic pages are located
+dynamic_folder = "_www"
+
+# An ip address to bind on
+host = "127.0.0.1"
+# Port to bind on
+port = 8080
+
+# Database file path
+database = "./_config/database.db"
+
+# Open brower on start. See https://docs.python.org/3/library/webbrowser.html#webbrowser.register for all possible values
+browser = "" # default browser
+# browser = "chrome" # open chrome
+# browser = false # do not open browser
+
+# Automaticaly close server
+exit_on_close = true
+idle_interval = 8
