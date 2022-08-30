@@ -1,4 +1,4 @@
-![Fbot Preview Image](fbot_main "Fbot Main Image")(https://github.com/jurajhonsch/Family-Budget-Overview-Tool/blob/main/fbot-preview.png?raw=true "Fbot Preview Image")
+![Fbot Preview Image](./fbot-preview.png?raw=true "Fbot Preview Image")
 
 # Family Budget Overview Tool
 The purpose of this tool is to gather manual inputs, process them, and display various statistical reports.
@@ -13,7 +13,7 @@ Just run `python3 fbot.py` in fbot directory. You should see this:
     08/10/2022 08:11:44 PM - INFO: Opening browser at http://127.0.0.1:8080/
     08/10/2022 08:11:44 PM - INFO: Serving on http://127.0.0.1:8080
 That opens your default browser by default.
-![Fbot Main Image](fbot_main "Fbot Main Image")(https://github.com/jurajhonsch/Family-Budget-Overview-Tool/blob/main/fbot_main.png?raw=true "Fbot Main Image")
+![Fbot Main Image](./fbot_main.png?raw=true "Fbot Main Image")
 
 # Configuration
 Navigate to `_config` directory and edit `config.toml` file.
