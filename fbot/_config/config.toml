@@ -138,13 +138,30 @@ colors = [
 # Default limit
 limit = 10
 
+[defaults.McDonald]
+
+# possible keys
+#
+# name
+# category
+# amount
+# type (income/expense)
+# date (in iso format YY-MM-DD, do not define to today)
+# comment
+
+name = "McDonald"
+category = "consumable"
+amount = 50
+type = "expense"
+
 [chart]
 
 # Chart type for epoch chart.
 epoch = "bar" # bar / line
 # Chart type for compare chart.
 compare = "pie" # pie / doughnut
-
+# Chart type for compare chart.
+detail = "bar" # pie / doughnut
 
 [server]
 
