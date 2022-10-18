@@ -138,7 +138,7 @@ colors = [
 # Default limit
 limit = 10
 
-[defaults.McDonald]
+# [defaults.McDonald]
 
 # possible keys
 #
@@ -149,10 +149,11 @@ limit = 10
 # date (in iso format YY-MM-DD, do not define to today)
 # comment
 
-name = "McDonald"
-category = "consumable"
-amount = 50
-type = "expense"
+# EXAMPLE
+# name = "McDonald"
+# category = "consumable"
+# amount = 50
+# type = "expense"
 
 [chart]
 
