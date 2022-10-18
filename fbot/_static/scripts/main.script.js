@@ -86,7 +86,30 @@ $(document).ready(() => {
 		let from_date = $(".from-date").val();
 		let to_date = $(".to-date").val();
 
-		window.open("/chart?chart-type=epoch&type=" + type + "&from-date=" + from_date + "&to-date=" + to_date, "_blank");
+		// let category = $(".category").val();
+
+		window.open("/chart?chart-type=epoch&type=" + type + "&from-date=" + from_date + "&to-date=" + to_date, "_blank"); // "&category=" +  category +
+	});
+	// detail button
+	$(".detail").click(() => {
+		let type = $(".type").val();
+
+		if (type == "all") {
+			alert("Please select type in your filter.");
+			return;
+		};
+
+		let from_date = $(".from-date").val();
+		let to_date = $(".to-date").val();
+
+		let category = $(".category").val();
+
+		if (category == "all") {
+			alert("Please select category in your filter.");
+			return;
+		}
+
+		window.open("/chart?chart-type=detail&type=" + type + "&category=" + category + "&from-date=" + from_date + "&to-date=" + to_date, "_blank");
 	});
 	// compare button
 	$(".compare").click(() => {
@@ -129,6 +152,20 @@ $(document).ready(() => {
 	$(".clear").click(() => {
 		window.location.href = window.location.href.replace(window.location.search,'');
 	});
+
+	// duplicate button clicked
+	$(".defaults").click(function () {
+		if ($(this).attr("name")) { $(".modal input[name=name]").val($(this).attr("name")); }
+		if ($(this).attr("amount")) { $(".modal input[name=amount]").val($(this).attr("amount")); }
+		if ($(this).attr("type")) { $(".modal select[name=type]").val($(this).attr("type")); }
+		if ($(this).attr("category")) { $(".modal select[name=category]").val($(this).attr("category")); }
+		if ($(this).attr("date")) { $(".modal input[name=date]").val($(this).attr("date")); }
+		if ($(this).attr("comment")) { $(".modal input[name=comment]").val($(this).attr("comment")); }
+
+		$(".action-add").click();
+	});
+	
+
 	// action after edit button clicked
 	$(".action-edit").click(function () {
 		let tableRow = $(this).parent().parent().parent();
