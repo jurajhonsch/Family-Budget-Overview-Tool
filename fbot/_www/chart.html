@@ -33,6 +33,17 @@
 							<option value="expense">expense</option>
 						</select>
 					</label>
+					{% if chart_type == "Detail" %}
+					<label>
+						Category:
+						<select class="category" autocomplete="off" value="{{ category }}">
+							<option value="all">all</option>
+							{% for item in categories %}
+							<option value="{{ item }}">{{ item }}</option>
+							{% endfor %}
+						</select>
+					</label>
+					{% endif %}
 					<label>From date: <input type="date" class="from-date" value="{{ from_date }}" autocomplete="off" /></label>
 					<label>To date: <input type="date" class="to-date" value="{{ to_date }}" autocomplete="off" /></label>
 				</div>

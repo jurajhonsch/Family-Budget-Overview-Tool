@@ -65,13 +65,22 @@
 					{% if has_data == True %}
 					<button class="epoch">Epoch</button>
 					<button class="compare">Compare</button>
+					<button class="detail">Detail</button>
 					{% else %}
 					<button class="epoch" disabled>Epoch</button>
 					<button class="compare" disabled>Compare</button>
+					<button class="detail" disabled>Detail</button>
 					{% endif %}
 				</div>
 				<p>To display chart, please select 'type' in your filter.</p>
 				<p>Table have to have data to display chart.</p>
+			</div>
+		</div>
+		<div class="group">
+			<div class="group-line">
+				{% for key, value in defaults_items %}
+				<button class="defaults" {% for subkey, subvalue in value %} {{subkey}}="{{subvalue}}" {% endfor %}>{{ key }}</button>
+				{% endfor %}
 			</div>
 		</div>
 
