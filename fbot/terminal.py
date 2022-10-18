@@ -21,7 +21,7 @@ print("        \/__/     \:\/:/  /     \:\/:/  /     \/__/       ")
 print("                   \::/__/       \::/  /                  ")
 print("                    ~~            \/__/                   ")
 print("                                                          ")
-print("           Family Budget Overview Tool v1.1 Beta          ")
+print("           Family Budget Overview Tool v1.2 Beta          ")
 print("     This project is created by Juraj Honsch (c) 2022     ")
 print()
 
